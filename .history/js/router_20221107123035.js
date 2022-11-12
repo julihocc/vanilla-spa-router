@@ -2,8 +2,7 @@ const route = (event) => {
     event = event || window.event;
     event.preventDefault();
     window.history.pushState({}, "", event.target.href);
-    console.log("🚀 ~ file: router.js ~ line 5 ~ route ~ window.history", window.history)
-    console.log("🚀 ~ file: router.js ~ line 5 ~ route ~ event.target.href", event.target.href)
+    console.log(window.location)
     handleLocation();
 };
 
@@ -16,9 +15,9 @@ const routes = {
 
 const handleLocation = async () => {
     const path = window.location.pathname;
-    console.log("🚀 ~ file: router.js ~ line 19 ~ handleLocation ~ window.location", window.location)
-    console.log("🚀 ~ file: router.js ~ line 19 ~ handleLocation ~ path", path)
+    console.log(path)
     const route = routes[path] || routes[404];
+    console.log(route)
     const html = await fetch(route).then((data) => data.text());
     document.getElementById("main-page").innerHTML = html;
 };
